@@ -8,7 +8,7 @@ const api = axios.create({
     params: { api_key: apiKey, language: "pt-BR", include_adult: false },
 });
 
-export async function searchMovies(query: string, page: 1) {
+export async function searchMovies(query: string, page: number = 1) {
     const { data } = await api.get("/search/movie", {
         params: { query, page },
     });
