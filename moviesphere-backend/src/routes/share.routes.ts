@@ -2,7 +2,6 @@ import { Router } from "express";
 import z from "zod";
 import { ShareService } from "../services/share.service.js";
 import { FavoritesService } from "../services/favorites.service.js";
-import { error } from "console";
 
 const router = Router();
 

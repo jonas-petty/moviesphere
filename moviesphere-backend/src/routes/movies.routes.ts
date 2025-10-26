@@ -23,7 +23,7 @@ router.get("/:id", async (req, res, next) => {
     try {
         const { id } = z.object({ id: z.string() }).parse(req.params);
         const data = await getMovieById(id);
-        res.json();
+        res.json(data);
     } catch (error) {
         next(error);
     }

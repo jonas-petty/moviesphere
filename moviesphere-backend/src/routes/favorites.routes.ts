@@ -7,7 +7,7 @@ const router = Router();
 router.get("/", async (_req, res, next) => {
     try {
         const list = await FavoritesService.list();
-        res.json();
+        res.json(list);
     } catch (error) {
         next(error);
     }
