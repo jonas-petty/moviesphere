@@ -7,8 +7,8 @@ export const FavoritesService = {
     add: (payload: {
         movieId: number;
         title: string;
-        posterPath?: string;
-        rating?: number;
+        posterPath?: string | null;
+        rating?: number | null;
     }) => prisma.favoriteMovie.create({ data: payload }),
 
     remove: (movieId: number) =>
