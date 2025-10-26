@@ -2,11 +2,26 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+model FavoriteMovie {
+  id  String @id @default(cuid())
+  movieId Int
+  title String
+  postPath String?
+  rating Float?
+  createdAt DateTime @default(now())
+}
+
+model ShareLink {
+  id  String @id @default(cuid())
+  token String @unique
+  movieIds String // I`ll go with a JSON string of Ints (It seems SQLite does not support array nativaly)
+  createdAt DateTime @default(now())
 }
