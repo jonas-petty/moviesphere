@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiKey = process.env.TMD_API_KEY!;
+const apiKey = process.env.TMDB_API_KEY!;
 if (!apiKey) throw new Error("TMD_API_KEY is not available on .env");
 
 const api = axios.create({
