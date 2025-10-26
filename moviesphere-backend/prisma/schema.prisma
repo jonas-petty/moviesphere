@@ -14,7 +14,7 @@ model FavoriteMovie {
   id  String @id @default(cuid())
   movieId Int
   title String
-  postPath String?
+  posterPath String?
   rating Float?
   createdAt DateTime @default(now())
 }
