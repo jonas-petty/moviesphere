@@ -34,7 +34,7 @@ function Movie() {
                 />
                 <div className="movie-details">
                     <h2>{movie.title}</h2>
-                    <p>{movie.vote_average}</p>
+                    <p>{movie.vote_average?.toFixed(1)}</p>
                     <p>{movie.overview}</p>
                     <button onClick={addFavorite}>Favoritar</button>
                 </div>
