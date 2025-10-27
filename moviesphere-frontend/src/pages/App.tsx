@@ -27,7 +27,7 @@ function App() {
             <button onClick={search}>Buscar</button>
             <Link to="/favorites">Favorites</Link>
 
-            {loading && <p>Carregando</p>}
+            {loading && <p>Carregando...</p>}
 
             <div id="movies-list">
                 {results.map((movie: any) => (
