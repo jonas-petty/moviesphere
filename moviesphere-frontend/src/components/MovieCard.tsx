@@ -35,11 +35,13 @@ function MovieCard({ movie, action }: any) {
             />
             <Info>
                 <h2>{movie.title}</h2>
-                <p>TMDB: {movie.rating || movie.vote_average}</p>
+                <p>
+                    TMDB: {movie.rating?.toFixed(1) || movie.vote_average?.toFixed(1)}
+                </p>
                 {action}
                 <Link
                     className={styles.link}
-                    to={`/movie/${movie.id || movie.movieId}`}
+                    to={`/movie/${movie.movieId || movie.id}`}
                 >
                     Detalhes
                 </Link>

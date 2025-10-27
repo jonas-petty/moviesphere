@@ -3,6 +3,8 @@ import { api } from "../services/api";
 import Header from "../components/Header";
 import styles from "../styles/pageLayout.module.css";
 import Button from "../components/Button";
+import Grid from "../components/Grid";
+import MovieCard from "../components/MovieCard";
 
 function Favorites() {
     const [list, setList] = useState<any[]>([]);
@@ -38,7 +40,7 @@ function Favorites() {
                 {!list.length && (
                     <p>Adicione filmes aos favoritos para velos aqui!</p>
                 )}
-                <Button disabled={!list.length} onClick={share}>
+                <Button disabled={!list.length} onButtonClick={share}>
                     Gerar Link
                 </Button>
                 {shareUrl && (
@@ -46,21 +48,16 @@ function Favorites() {
                         Compartilhe: <a href={shareUrl}>{shareUrl}</a>
                     </p>
                 )}
-                <div id="movies-container">
+                <Grid>
                     {list.map((movie: any) => (
-                        <div key={movie.id} className="movie-card">
-                            <img
-                                src={`https://image.tmdb.org/t/p/w200${movie.posterPath}`}
-                                alt="Movie poster"
-                            />
-                            <h3>{movie.title}</h3>
-                            <p>TMDB: {movie.rating?.toFixed(1)}</p>
-                            <button onClick={() => remove(movie.movieId)}>
-                                Romover
-                            </button>
-                        </div>
+                        <MovieCard
+                            movie={movie}
+                            action={
+                                <Button onButtonClick={() => remove(movie.movieId)}>Deletar</Button>
+                            }
+                        />
                     ))}
-                </div>
+                </Grid>
             </div>
         </>
     );
