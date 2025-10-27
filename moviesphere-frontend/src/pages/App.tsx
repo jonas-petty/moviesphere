@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { api } from "../services/api";
-import { Link } from "react-router-dom";
+import styles from "../styles/pageLayout.module.css";
+import Header from "../components/Header";
+import Input from "../components/TextInput";
+import Button from "../components/Button";
+import MovieCard from "../components/MovieCard";
+import Grid from "../components/Grid";
 
 function App() {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
 
-    async function search() {
+    async function search(event: any) {
+        event.preventDefault();
         if (!query.trim()) return;
 
         setLoading(true);
@@ -17,32 +23,29 @@ function App() {
     }
 
     return (
-        <div id="container">
-            <h1>MovieSphere</h1>
-            <input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Buscar Filme"
-            />
-            <button onClick={search}>Buscar</button>
-            <Link to="/favorites">Favorites</Link>
+        <>
+            <Header />
+            <div className={styles.container}>
+                <form style={{ display: "flex" }}>
+                    <Input
+                        value={query}
+                        onChange={setQuery}
+                        placeholder={"Buscar Filme"}
+                    />
+                    <Button onButtonClick={search}>Buscar</Button>
+                </form>
 
-            {loading && <p>Carregando...</p>}
+                {loading && <p>Carregando...</p>}
 
-            <div id="movies-list">
-                {results.map((movie: any) => (
-                    <div key={movie.id} className="movie-card">
-                        <img
-                            src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                            alt="Movie poster"
-                        />
-                        <h3>{movie.title}</h3>
-                        <p>TMDB: {movie.vote_average?.toFixed(1)}</p>
-                        <Link to={`/movie/${movie.id}`}>Detalhes</Link>
-                    </div>
-                ))}
+                <div id="movies-list">
+                    <Grid>
+                        {results.map((movie: any) => (
+                            <MovieCard movie={movie} />
+                        ))}
+                    </Grid>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
