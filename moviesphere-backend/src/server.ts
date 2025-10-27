@@ -9,7 +9,14 @@ import { errorHandler } from "./middlewares/error.js";
 const app = express();
 
 const allowed = [process.env.FRONTEND_ORIGIN ?? ""];
-app.use(cors({ origin: allowed, credentials: false }));
+app.use(
+    cors({
+        origin: allowed,
+        credentials: false,
+        methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+    })
+);
 app.use(express.json());
 
 app.use("/movies", MoviesRouter);
