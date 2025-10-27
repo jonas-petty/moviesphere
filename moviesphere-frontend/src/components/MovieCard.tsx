@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import styles from "../styles/pageLayout.module.css";
+import RatingBadge from "./RatingBadge";
 
 const StyledMovieCard = styled.div`
     max-width: 25rem;
@@ -36,7 +37,8 @@ function MovieCard({ movie, action }: any) {
             <Info>
                 <h2>{movie.title}</h2>
                 <p>
-                    TMDB: {movie.rating?.toFixed(1) || movie.vote_average?.toFixed(1)}
+                    TMDB:{" "}
+                    <RatingBadge rating={movie.rating || movie.vote_average} />
                 </p>
                 {action}
                 <Link
