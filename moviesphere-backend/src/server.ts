@@ -7,7 +7,9 @@ import shareRouter from "./routes/share.routes.js";
 import { errorHandler } from "./middlewares/error.js";
 
 const app = express();
-app.use(cors());
+
+const allowed = [process.env.FRONTEND_ORIGIN ?? ""];
+app.use(cors({ origin: allowed, credentials: false }));
 app.use(express.json());
 
 app.use("/movies", MoviesRouter);
