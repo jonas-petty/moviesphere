@@ -5,6 +5,7 @@ import App from "./pages/App";
 import Favorites from "./pages/Favorites";
 import Movie from "./pages/Movie";
 import Share from "./pages/Share";
+import "./styles/globals.css";
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
