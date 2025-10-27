@@ -1,10 +1,20 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import App from "./pages/App";
+import Favorites from "./pages/Favorites";
+import Movie from "./pages/Movie";
+import Share from "./pages/Share";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+createRoot(document.getElementById("root")!).render(
+    <StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />} />
+                <Route path="/movie/:id" element={<Movie />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="/share/:token" element={<Share />} />
+            </Routes>
+        </BrowserRouter>
+    </StrictMode>
+);
