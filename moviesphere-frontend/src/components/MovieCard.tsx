@@ -28,7 +28,7 @@ const Info = styled.div`
 
 function MovieCard({ movie, action }: any) {
     return (
-        <StyledMovieCard key={movie.id || movie.movieId}>
+        <StyledMovieCard>
             <Poster
                 src={`https://image.tmdb.org/t/p/w300${
                     movie.poster_path || movie.posterPath

@@ -40,7 +40,10 @@ function App() {
                 <div id="movies-list">
                     <Grid>
                         {results.map((movie: any) => (
-                            <MovieCard movie={movie} />
+                            <MovieCard
+                                key={movie.id || movie.movieId}
+                                movie={movie}
+                            />
                         ))}
                     </Grid>
                 </div>

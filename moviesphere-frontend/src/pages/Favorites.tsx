@@ -51,9 +51,14 @@ function Favorites() {
                 <Grid>
                     {list.map((movie: any) => (
                         <MovieCard
+                            key={movie.id || movie.movieId}
                             movie={movie}
                             action={
-                                <Button onButtonClick={() => remove(movie.movieId)}>Deletar</Button>
+                                <Button
+                                    onButtonClick={() => remove(movie.movieId)}
+                                >
+                                    Deletar
+                                </Button>
                             }
                         />
                     ))}

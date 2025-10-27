@@ -25,7 +25,10 @@ function Share() {
                 <h2>Favoritos Compartilhados</h2>
                 <Grid>
                     {data.movies.map((movie: any) => (
-                        <MovieCard movie={movie} />
+                        <MovieCard
+                            key={movie.id || movie.movieId}
+                            movie={movie}
+                        />
                     ))}
                 </Grid>
             </div>
