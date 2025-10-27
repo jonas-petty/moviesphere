@@ -15,10 +15,20 @@ const StyledButton = styled.button`
     &:hover {
         border: 1px solid white;
     }
+
+    &:disabled {
+        cursor: not-allowed;
+        border: none;
+        opacity: 0.7;
+    }
 `;
 
-function Button({ onButtonClick, children }: any) {
-    return <StyledButton onClick={onButtonClick}>{children}</StyledButton>;
+function Button({ onButtonClick, disabled, children }: any) {
+    return (
+        <StyledButton disabled={disabled} onClick={onButtonClick}>
+            {children}
+        </StyledButton>
+    );
 }
 
 export default Button;
