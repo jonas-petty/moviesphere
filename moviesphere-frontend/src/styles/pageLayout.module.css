@@ -1,0 +1,21 @@
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.link {
+    color: var(--action-color);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.link:hover {
+    color: #65d9f6;
+}
