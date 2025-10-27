@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { api } from "../services/api";
+import Grid from "../components/Grid";
+import MovieCard from "../components/MovieCard";
+import styles from "../styles/pageLayout.module.css";
+import Header from "../components/Header";
 
 function Share() {
     const { token } = useParams();
@@ -15,22 +19,17 @@ function Share() {
     if (!data) return <p>Carregando...</p>;
     if (data.error) return <p>Link inválido ou expirado.</p>;
     return (
-        <div id="container">
-            <h1>Favoritos Compartilhados</h1>
-            <Link to="/">Buscar</Link>
-            <div id="movies-container">
-                {data.movies.map((movie: any) => (
-                    <div key={movie.id} className="movie-card">
-                        <img
-                            src={`https://image.tmdb.org/t/p/w200${movie.posterPath}`}
-                            alt="Movie poster"
-                        />
-                        <h3>{movie.title}</h3>
-                        <p>TMDB: {movie.rating?.toFixed(1)}</p>
-                    </div>
-                ))}
+        <>
+            <Header />
+            <div className={styles.container}>
+                <h2>Favoritos Compartilhados</h2>
+                <Grid>
+                    {data.movies.map((movie: any) => (
+                        <MovieCard movie={movie} />
+                    ))}
+                </Grid>
             </div>
-        </div>
+        </>
     );
 }
 
